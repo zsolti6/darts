@@ -10,7 +10,7 @@ export const DartsDel = () => {
         (
             async () => {
                 try{
-                    const res = await fetch(`https://darts.sulla.hu/darts/${id}`);
+                    const res = await axios.get(`https://darts.sulla.hu/darts/${id}`);
                     const darts = await res.json();
                     setDarts(darts);
                 }
@@ -34,9 +34,7 @@ export const DartsDel = () => {
             </div>
             <form onSubmit={(event) => {
                 event.preventDefault();
-                fetch(`https://darts.sulla.hu/darts/${id}`, {
-                    method: "DELETE",
-                }).then(() => {
+                axios.delete(`https://darts.sulla.hu/darts/${id}`).then(() => {
                     navigate("/");
                 });
             }}>
